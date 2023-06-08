@@ -1,0 +1,117 @@
+//Partial utilizado para Media Querys
+
+@use 'variables';
+@use 'mixins';
+
+
+@media screen and  (min-width: 550px) {
+    .proyectos__cont__modal__body img{
+        height: 80vh;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .footer{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        height: auto;
+        position: relative;
+        align-items: center;
+
+        &__copyright{
+            display: flex;
+            align-items: flex-end;
+            color: variables.$third-color;
+            height: auto;
+
+            p{
+                margin: 5px 0;
+            }
+        }
+
+        &__redes{
+            display: flex;
+            height: auto;
+            align-items: center;
+            justify-content: flex-end;
+            margin: 15px 0;
+
+            ul{
+                padding: 0;
+                margin: .5rem;
+                
+                li{
+                    display: inline-block;
+                    margin: 0 5px;
+                    width: 40px;
+                    height: 40px;
+                    text-align: center;
+
+                    a{
+                        display: block;
+                        padding: 0 10px;
+                        background: variables.$sec-color;
+                        border-radius: 50%;
+                        color:variables.$prim-color;
+                        line-height: 40px;
+                        font-size: variables.$icon-size-media;
+                        transition: .2s;
+                    }
+                }
+            }
+        }
+    }
+
+    .servicios__cont__title, .proyectos__cont__title, .contactame__cont__title{
+        @include mixins.title(variables.$title-size-media);
+    }
+}
+
+@media screen and (max-height:730px) {
+    
+    .sobremi__cont__card{
+        position: relative;
+        width: 200px;
+        height: 150px;
+        background: variables.$prim-color;
+        transition: 0.5s;
+        margin: 5em 0;
+
+        &:hover{
+            height: 400px;
+
+            .sobremi__cont__card__img{
+                width: 150px;
+                height: 150px;
+                filter: drop-shadow(15px 10px 0 variables.$third-color);
+            }
+
+            .sobremi__cont__card__content__details{
+                transform: translateY(40px);
+            }
+
+            .sobremi__cont__card__content__text{
+                transform: translateY(20px);
+            }
+        }
+
+        &__content__details{
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            transition: .5s;
+            transform: translateY(155px);
+        }
+
+        &__content__text{
+            transform: translateY(150px);
+            text-align: center;
+            transition: all .5s;
+            
+        }
+    }
+}
