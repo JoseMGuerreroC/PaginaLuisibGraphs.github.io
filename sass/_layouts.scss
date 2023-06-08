@@ -1,0 +1,598 @@
+//Partial utilizado para el diseño de los layouts (Mains) de cada página
+
+@use 'variables';
+@use 'mixins';
+
+
+$min-height: calc(100vh - 155px);
+
+
+//Estilos Main - Index ------------------------------------------
+
+.main-index{
+    height: $min-height;
+    position: relative;
+    display: flex;
+    
+
+    &__presentacion{
+        position: relative;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1{
+            color: variables.$sec-color;
+            font-size: variables.$title-size;
+            font-family: variables.$main-font;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        h2{
+            color: variables.$sec-color;
+            font-size: variables.$subtitle-size;
+            font-family: variables.$main-font;
+        }
+    }
+
+    &__button{
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 50px;
+        font-family: variables.$main-font;
+        font-size: variables.$btn-size;
+        font-weight: 500;
+        transition: all .5s;
+        border: 2px solid #000;
+
+        &:hover{
+            background: variables.$third-color;
+            color: variables.$sec-color;
+            transform: scale(1.1);
+            font-weight: 500;
+        }
+    }
+
+    &__video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -100;
+
+
+    }
+}
+
+
+//Estilos Main - SobreMi -----------------------------------------
+
+.sobremi{
+    @include mixins.main;
+
+    &__cont{
+        min-height: $min-height;
+        background: variables.$prim-color;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+        &__card{
+            position: relative;
+            width: 350px;
+            height: 150px;
+            background: variables.$prim-color;
+            transition: 0.5s;
+
+            &__lines{
+                position: absolute;
+                inset: 0;
+                background: #000;
+                overflow: hidden;
+
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 650px;
+                    height: 150px;
+                    background: linear-gradient(transparent,#fff, transparent);
+                    animation: card_sobremi 4s linear infinite;
+                }
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    inset: 3px;
+                    background: variables.$prim-color;
+                }
+            }
+
+            &__img{
+                position: absolute;
+                top: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 150px;
+                height: 150px;
+                background: none;
+                transition: .5s;
+                z-index: 100;
+
+                img{
+                    position: absolute;
+                    top: -5px;
+                    left: 10px;
+                    width: calc(100% - 20px);
+                    height: calc(100% - 20px);
+                    animation: floating 2s ease-in-out infinite alternate both;
+                }
+            }
+
+            &:hover{
+                height: 450px;
+
+                .sobremi__cont__card__img{
+                    width: 250px;
+                    height: 250px;
+                    filter: drop-shadow(15px 10px 0 variables.$third-color);
+
+                    img{
+                        animation-play-state: paused;
+                    }
+                }
+
+                .sobremi__cont__card__content__details{
+                    transform: translateY(80px);
+                }
+
+                .sobremi__cont__card__content__text{
+                    transform: translateY(80px);
+                }
+
+
+
+                i{
+                    opacity: 0;
+                }
+            }
+
+            &__content{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden;
+
+                &__details{
+                    padding: 30px;
+                    text-align: center;
+                    width: 100%;
+                    transition: .5s;
+                    transform: translateY(120px);
+
+                    h1{
+                        font-size: 1.5em;
+                        font-weight: 700;
+                        color: variables.$sec-color;
+                        font-family: variables.$main-font;
+                        line-height: 1.2em;
+                    }
+                }
+
+                &__text{
+                    transform: translateY(125px);
+                    text-align: center;
+                    transition: all .5s;
+                    
+                    h2{
+                        color: variables.$sec-color;
+                        font-family: variables.$main-font;
+                        font-size: 1rem;
+                        font-weight: 800;
+                    }
+
+                    p{
+                        color: variables.$sec-color;
+                        font-family: variables.$main-font;
+                        font-size: variables.$p-size;
+                    }
+                }
+            }
+
+            i{
+                color: variables.$sec-color;
+                font-size: variables.$icon-size-media;
+                z-index: 100;
+                position: absolute;
+                bottom: -12px;
+                right: -12px;
+                background: variables.$prim-color;
+                padding: 5px;
+                border-radius: 50%;
+                border: 2px solid variables.$sec-color;
+                transition: opacity .5s;
+            }
+        }
+    }
+}
+
+//Estilos Main - Servicios --------------------------------------
+
+.servicios{
+    @include mixins.main;
+
+    &__cont{
+        background: variables.$prim-color;
+        position: relative;
+        min-height: $min-height;
+
+        &__title{
+            @include mixins.title(variables.$title-size)
+        }
+
+        &__card{
+            width: 100%;
+            height: 500px;
+            padding: 2rem 1rem;
+            background: #fff;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            transition: .5s ease-in-out;
+            transform: translateY(20px);
+
+            
+            i{
+                position: absolute;
+                z-index: 1000;
+                color: #fff;
+                background: #000;
+                padding: 8px;
+                border-radius: 50%;
+                border: 1px solid #fff;
+                transition: opacity .3s;
+            }
+            
+
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, #282b2a80, rgb(0, 0, 0));
+                z-index: 100;
+                transition: .5s all;
+                opacity: 0;
+            }
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            #servicios-img3{
+                width: 100%;
+                height: 80%;
+                object-fit: scale-down;
+                position: absolute;
+                top: 1.2em;
+                left: 0;
+            }
+
+            &__info{
+                position: relative;
+                z-index: 200;
+                color: variables.$sec-color;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all .5s;
+
+                h2{
+                    margin: 0;
+                    font-family: variables.$main-font;
+                    cursor: default;
+                    user-select: none;
+                }
+
+                p{
+                    letter-spacing: 1px;
+                    font-size: variables.$p-size;
+                    margin-top: 8px;
+                    margin-bottom: 20px;
+                    font-family: variables.$main-font;
+                    cursor: default;
+                    user-select: none;
+                }
+            }
+
+            &:hover {
+                
+                .servicios__cont__card__info{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            
+                &::before{
+                    opacity: 1;
+                }
+
+                i{
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+//Estilos Main - Proyectos --------------------------------------
+
+.proyectos{
+    @include mixins.main;
+
+    &__cont{
+        background: variables.$prim-color;
+        position: relative;
+        min-height: $min-height;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &__divisor{
+            font-family: variables.$main-font;
+            font-size: variables.$subtitle-size;
+            font-weight: 800;
+            color: variables.$sec-color;
+            text-shadow: 0 0 .20em #fff7, 0 0 .30em #fff;
+            padding: 10px;
+            border-bottom: 1px solid variables.$sec-color;
+        }
+
+        &__title{
+            @include mixins.title(variables.$title-size);
+        }
+
+        &__btn{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: variables.$prim-color;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            img{
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                position: relative;
+                object-position: center;
+                border: 2px solid #000;
+                transition: all .5s;
+            }
+
+            &:hover > img{
+                transform: translateY(-3px);
+                border: 2px solid #fff;
+                box-shadow: 0 0 .20em #fff7, 0 0 1em #fff;
+            }
+        }
+
+        &__modal{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            height: auto;
+            pointer-events: auto;
+            background: #222;
+            background-clip: padding-box;
+            border-radius: 20px;
+
+            &__header{
+                display: flex;
+                flex-shrink: 0;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 1rem 1rem;
+            }
+
+            &__body{
+                position: relative;
+                flex: 1 1 auto;
+                object-fit: contain;
+                padding: 1rem;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}
+
+//Estilos Main - Contacto ---------------------------------------
+
+.contactame{
+    @include mixins.main;
+
+    &__cont{
+        background: variables.$prim-color;
+        position: relative;
+        min-height: $min-height;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        z-index: 1;
+
+        &__title{
+            @include mixins.title(variables.$title-size);
+        }
+
+        &__text{
+            font-family: variables.$main-font;
+            color: variables.$sec-color;
+        }
+
+        &__icon{
+            font-size: variables.$subtitle-size-2;
+            color: variables.$sec-color;
+            transition: all .2s;
+
+            &:hover{
+                transform: scale(1.2);
+                color: variables.$instagram;
+            }
+        }
+
+        &__btn{
+            color: variables.$sec-color;
+            font-size: 1.5em;
+            font-family: variables.$main-font;
+            font-weight: 900;
+            display: inline-block;
+            position: relative;
+            border: .125em solid variables.$sec-color;
+            padding: 0 .5em;
+            background: none;
+            border-radius: .25em;
+            text-shadow:  0 0 .20em #fff7, 0 0 .30em variables.$sec-color;
+            box-shadow: inset 0 0 .5em variables.$sec-color, 0 0 .5em variables.$sec-color ;
+            margin-top: 15px;
+            margin-bottom: 3em;
+
+            &::before{
+                content: "";
+                position: absolute;
+                top: 130%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: variables.$sec-color;
+                transform: perspective(.2em) rotateX(10deg) scale(1.3, 0.40);
+                filter: blur(0.5em);
+                opacity: 0.6;
+                pointer-events: none;
+                transition: opacity 100ms linear;
+            }
+
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: variables.$sec-color;
+                box-shadow:  0 0 3em variables.$sec-color ;
+                z-index: -10;
+                opacity: 0;
+            }
+
+            &:hover{
+                color: variables.$prim-color;
+                
+                &::after{
+                    opacity: 1;
+                }
+            }
+
+            &:active{
+                color: #35adfd;
+            }
+        }
+    }
+}
+
+.form-floating{
+
+    #form__campos{
+        border: 2px solid variables.$sec-color;
+        color: variables.$prim-color;
+
+        &:focus{
+            box-shadow: 0 0 .5em #fff;
+        }
+    }
+
+    #form__textarea{
+        height: 150px;
+        color: variables.$prim-color;
+        border: 2px solid variables.$sec-color;
+
+        &:focus{
+            box-shadow: 0 0 .5em #fff;
+        }
+    }
+
+    #form__label{
+        color: #777;
+        text-decoration: none;
+    }
+}
+
+/* Condicional 'If' (Solamente de prueba). Si se invierten las variables '$prim.color' y '$sec.color' 
+respectivamente, toda la página se invierte en colores*/
+
+@if variables.$prim-color == #fff { 
+    .main-index__video{
+        filter: invert(1)
+    }
+
+    .main-index__button{
+        background: #000;
+        color: #fff;
+
+        &:hover{
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+    }
+
+    .sobremi__cont__card{
+        .sobremi__cont__card__img img{
+            filter: invert(1);
+        }
+
+        &:hover{
+            .sobremi__cont__card__img{
+                filter: drop-shadow(15px 10px 0 #888);
+            }
+        }
+    }
+
+    .nav__img{
+        filter: invert(1);
+    }
+
+    .servicios__cont__card__info{
+        color: #fff;
+    }
+
+    #navbar-toggler{
+        filter: invert(0);
+    }
+}
+
+
+
