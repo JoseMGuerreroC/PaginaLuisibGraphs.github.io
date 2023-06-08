@@ -1,0 +1,67 @@
+//Partial para el diseño del Navbar
+
+@use 'variables';
+@use 'mixins';
+
+.navbar{
+    height: 75px;
+    z-index: 1000;
+    background: variables.$prim-color;
+}
+
+.navbar-brand{
+    .nav__img{
+        transition: all .5s;
+        margin: 0 10px;
+        &:hover{
+            filter: invert(50%);
+        }
+    }
+    &-active{
+        @include mixins.active;
+    }
+}
+
+#navbarTogglerDemo02{
+    background: variables.$prim-color;
+}
+
+.nav__link{
+    display: block;
+    padding: 20px;
+    font-size: variables.$p-size;
+    font-family: variables.$main-font;
+    color: variables.$sec-color;
+    text-decoration: none;
+    transition: color .5s;
+    transition: transform .5s;
+
+    &-active{
+        @include mixins.active;
+    }
+
+    &:hover{
+        transform: translateY(2px);
+        color: #999;
+    }
+}
+
+.nav__btn{
+    @include mixins.btn(variables.$prim-color, variables.$sec-color,);
+
+    &-active{
+        @include mixins.btn(variables.$sec-color, variables.$prim-color);
+    }
+
+    &:hover{
+        background: variables.$sec-color;
+        color: variables.$prim-color;
+        font-weight: 700;
+    }
+}
+
+#navbar-toggler{
+    filter: invert(1);
+}
+
+
