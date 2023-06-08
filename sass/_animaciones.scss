@@ -1,0 +1,22 @@
+//Partial para las animaciones utilizadas
+
+@use 'variables';
+
+@keyframes card_sobremi{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg); 
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+@keyframes floating {
+    0%{
+        transform: translateY(15px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+    
+}
