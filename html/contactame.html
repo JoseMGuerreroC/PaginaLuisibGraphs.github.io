@@ -54,20 +54,22 @@
     </div>
     <div class="row animate__animated animate__fadeIn animate__slow"> <!--Fila 2 (Formulario y opciones de contacto)-->
       <div class="col-12 col-md-6"> <!--Formulario-->
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="form__campos" placeholder="Tu nombre">
-          <label id="form__label" for="form__campos">Ingresa tu nombre</label>
+        <form>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="form__campos" placeholder="Tu nombre" required>
+            <label id="form__label" for="form__campos">Ingresa tu nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="form__campos" placeholder="name@example.com" required>
+            <label id="form__label" for="form__campos">Ingresa tu correo</label>
+          </div>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Deja tu idea aquí" id="form__textarea" required></textarea>
+            <label id="form__label" for="form__textarea">Háblame sobre tu proyecto</label>
+          </div>
+          <button type="submit" class="contactame__cont__btn">Enviar</button> <!--Botón Neon-->
         </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="form__campos" placeholder="name@example.com">
-          <label id="form__label" for="form__campos">Ingresa tu correo</label>
-        </div>
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Deja tu idea aquí" id="form__textarea" ></textarea>
-          <label id="form__label" for="form__textarea">Háblame sobre tu proyecto</label>
-        </div>
-        <button type="submit" class="contactame__cont__btn">Enviar</button> <!--Botón Neon-->
-      </div>
+      </form>
       <div class="col-12 col-md-6 "> <!--Contenedor de la información de contacto-->
         <h2 class="contactame__cont__text">Más información de contacto</h2>
         <h5 class="contactame__cont__text"><i class="fa-solid fa-envelope fa-bounce"></i> contactokiindz@gmail.com</h5>
